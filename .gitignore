@@ -1,0 +1,83 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.yarn/
+.yarn-cache/
+.npm/
+
+# Next.js build output
+.next/
+out/
+
+# Production build
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+.nyc_output/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+
+# Storybook
+.storybook-static/
+
+# Vercel
+.vercel/
+
+# Turbo (if using Turborepo)
+.turbo/
+
+# Generated files
+*.generated.*
+
+# Cache files
+.cache/
+.parcel-cache/
+
+# Three.js / WebGL related generated assets
+# (only if you generate these locally)
+*.glb.tmp
+*.gltf.tmp
+
+# Local databases
+*.sqlite
+*.db
+
+# Uploads / user-generated files
+uploads/
+public/uploads/
+
+# Misc
+.DS_Store?
