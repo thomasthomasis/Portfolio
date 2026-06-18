@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Thomas Sloane — Software Engineer",
+    default: "Thomas Sloane",
     template: "%s | Thomas Sloane",
   },
   description:
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://thomassloane.dev",
-    title: "Thomas Sloane — Software Engineer",
+    title: "Thomas Sloane",
     description:
       "Software engineer specializing in React, Next.js, and modern web development.",
     siteName: "Thomas Sloane",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thomas Sloane — Software Engineer",
+    title: "Thomas Sloane",
     description:
       "Software engineer specializing in React, Next.js, and modern web development.",
     creator: "@thomassloane",

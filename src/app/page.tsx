@@ -7,7 +7,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Thomas Sloane — Software Engineer",
+  title: "Thomas Sloane",
   description:
     "Software engineer specialising in full stack web apps, mobile development, and systems programming.",
 };
