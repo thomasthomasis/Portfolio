@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
 import { SkillsSection } from "@/components/about/skills-section";
 import { TimelineSection } from "@/components/about/timeline-section";
-import { ProjectsClient } from "@/components/projects/projects-client";
+import { ProjectsSceneLazy as ProjectsScene } from "@/components/projects-3d/lazy";
 import { ContactForm } from "@/components/contact/contact-form";
-import { projects } from "@/lib/data";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -57,14 +56,13 @@ export default function HomePage() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Photo placeholder */}
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden glass flex items-center justify-center">
-              <div className="flex flex-col items-center gap-3 text-white/10">
-                <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                </svg>
-                <span className="text-xs">Professional photo</span>
-              </div>
+            <div className="rounded-2xl overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/me.webp"
+                alt="Thomas Sloane"
+                className="w-full h-auto block"
+              />
             </div>
 
             {/* Bio */}
@@ -151,11 +149,10 @@ export default function HomePage() {
               Projects
             </h2>
             <p className="text-base text-white/40 max-w-lg leading-relaxed">
-              A curated selection of things I&apos;ve built — from production web
-              apps and mobile experiences to AI tools.
+              A curated selection of things I&apos;ve built. Click on the orbs to open them up.
             </p>
           </div>
-          <ProjectsClient projects={projects} />
+          <ProjectsScene />
         </section>
 
         {/* Divider */}

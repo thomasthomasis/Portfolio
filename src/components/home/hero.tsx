@@ -81,8 +81,8 @@ export function Hero() {
             className="flex items-center gap-8 pt-6 border-t border-white/[0.06] mt-4"
           >
             {[
-              { value: "4+", label: "Years experience" },
-              { value: "10+", label: "Projects shipped" },
+              { value: "3+", label: "Years experience" },
+              { value: "3+", label: "Projects shipped" },
               { value: "2", label: "Interns mentored" },
             ].map(({ value, label }) => (
               <div key={label} className="text-center">
