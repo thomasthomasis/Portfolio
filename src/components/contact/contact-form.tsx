@@ -13,13 +13,38 @@ type FormState = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("submitting");
-    // Simulate submission — wire up to an API route or Resend/Formspree
-    await new Promise((r) => setTimeout(r, 1200));
-    setState("success");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const body = {
+      name:    (form.elements.namedItem("name")    as HTMLInputElement).value,
+      email:   (form.elements.namedItem("email")   as HTMLInputElement).value,
+      subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+
+      setState("success");
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
+      setState("error");
+    }
   }
 
   if (state === "success") {
@@ -103,6 +128,16 @@ export function ContactForm() {
           rows={5}
         />
       </motion.div>
+
+      {state === "error" && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-sm text-red-400"
+        >
+          {errorMsg}
+        </motion.p>
+      )}
 
       <motion.div variants={fadeUp}>
         <Button

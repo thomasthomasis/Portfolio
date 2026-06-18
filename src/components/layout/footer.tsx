@@ -1,17 +1,9 @@
-import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const socialLinks = [
   { href: "https://github.com/thomasthomasis", icon: Github, label: "GitHub" },
   { href: "https://www.linkedin.com/in/thomas-sloane-115ab4172/", icon: Linkedin, label: "LinkedIn" },
   { href: "mailto:thomas.i.sloane@gmail.com", icon: Mail, label: "Email" },
-];
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Footer() {
@@ -25,25 +17,9 @@ export function Footer() {
               Thomas Sloane
             </span>
             <span className="text-xs text-white/30">
-              Software Engineer
+              Fullstack Software Engineer
             </span>
           </div>
-
-          {/* Nav */}
-          <nav aria-label="Footer navigation">
-            <ul className="flex items-center gap-6" role="list">
-              {navLinks.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm text-white/40 hover:text-white/70 transition-colors duration-200"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
           {/* Social */}
           <div className="flex items-center gap-4">
@@ -64,7 +40,7 @@ export function Footer() {
 
         <div className="mt-8 pt-6 border-t border-white/[0.04] text-center">
           <p className="text-xs text-white/20">
-            © {new Date().getFullYear()} Thomas Sloane. Built with Next.js & Tailwind CSS.
+            © {new Date().getFullYear()} Thomas Sloane
           </p>
         </div>
       </div>
