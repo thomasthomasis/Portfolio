@@ -5,6 +5,7 @@ import { TimelineSection } from "@/components/about/timeline-section";
 import { ProjectsSceneLazy as ProjectsScene } from "@/components/projects-3d/lazy";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import PorfolioChat from "@/components/chat/PortfolioChat";
 
 export const metadata: Metadata = {
   title: "Thomas Sloane",
@@ -231,6 +232,8 @@ export default function HomePage() {
         </section>
 
       </div>
+
+      <PorfolioChat />
     </>
   );
 }
