@@ -91,7 +91,7 @@ export default function HomePage() {
                   { label: "Location", value: "Toronto, ON" },
                   { label: "Availability", value: "Open to offers" },
                   { label: "Education", value: "University of Galway" },
-                  { label: "Pronouns", value: "He / Him" },
+                  
                 ].map(({ label, value }) => (
                   <div key={label}>
                     <dt className="text-xs text-white/25 uppercase tracking-widest mb-0.5">{label}</dt>
