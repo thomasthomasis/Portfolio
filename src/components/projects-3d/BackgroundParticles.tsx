@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 export function BackgroundParticles() {
   const ref = useRef<THREE.Points>(null);
-  const COUNT = 220;
+  const { size } = useThree();
+  const COUNT = size.width < 640 ? 80 : 220;
 
   const positions = useMemo(() => {
     const arr = new Float32Array(COUNT * 3);

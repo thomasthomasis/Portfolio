@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useCallback, useEffect } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import type { ThreeEvent } from "@react-three/fiber";
 import { useProjectStore } from "./store";
@@ -13,6 +13,10 @@ import { projects } from "@/lib/data";
 export function OrbCluster() {
   const mode       = useProjectStore((s) => s.mode);
   const selectedId = useProjectStore((s) => s.selectedId);
+  const { size }   = useThree();
+
+  // Shrink the spread radius on narrow canvases so orbs stay in frame
+  const spreadRadius = size.width < 500 ? 2.0 : SPREAD_RADIUS;
 
   const groupRef = useRef<THREE.Group>(null);
 
@@ -109,13 +113,13 @@ export function OrbCluster() {
   // ── Target positions per mode ────────────────────────────────────────
   const positions = useMemo<[number, number, number][]>(() => {
     if (mode === "idle")      return fibonacciSphere(projects.length, CLUSTER_RADIUS);
-    if (mode === "exploring") return pentagonSpread(projects.length, SPREAD_RADIUS);
+    if (mode === "exploring") return pentagonSpread(projects.length, spreadRadius);
     return projects.map((p, i) => {
       if (p.id === selectedId) return [0, 0, 0];
       const angle = (i / projects.length) * Math.PI * 2;
       return [Math.cos(angle) * 4.4, Math.sin(angle) * 1.8, -2.5];
     });
-  }, [mode, selectedId]);
+  }, [mode, selectedId, spreadRadius]);
 
   return (
     <group ref={groupRef} onPointerDown={onPointerDown} onClick={onGroupClick}>

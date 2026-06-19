@@ -46,7 +46,7 @@ export const projects: Project[] = [
     tags: ["React", "Nakama", "Go", "Node.js"],
     githubUrl: "https://github.com/thomasthomasis/TypeMaster",
     featured: true,
-    year: 2022,
+    year: 2025,
   },
   {
     id: "IAIYH",

@@ -49,9 +49,10 @@ export function ProjectsScene() {
 
   return (
     <div
-      className="relative w-full h-[60vh] min-h-[400px]"
+      className="relative w-full h-[55vh] sm:h-[60vh] min-h-[320px]"
       onMouseEnter={onSectionEnter}
       onMouseLeave={onSectionLeave}
+      style={{ touchAction: "none" }}
     >
       {/* Canvas dims when the detail panel is open */}
       <motion.div
@@ -61,7 +62,7 @@ export function ProjectsScene() {
       >
         <Canvas
           camera={{ position: [0, 0, 7], fov: 50 }}
-          dpr={[1, 2]}
+          dpr={[1, 1.5]}
           gl={{ antialias: true, alpha: true }}
           style={{ background: "transparent" }}
           onPointerMissed={() => {
