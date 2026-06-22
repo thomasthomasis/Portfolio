@@ -13,7 +13,6 @@ export interface Project {
 
 export interface Skill {
   name: string;
-  level: number;
   category: "frontend" | "backend" | "tools" | "API styles";
 }
 
@@ -62,21 +61,26 @@ export const projects: Project[] = [
 ];
 
 export const skills: Skill[] = [
-  { name: "JavaScript / TypeScript", level: 90, category: "frontend" },
-  { name: "React / Next.js", level: 90, category: "frontend" },
-  { name: "Angular", level: 65, category: "frontend" },
-  { name: "React Native", level: 85, category: "frontend" },
-  { name: "HTML / CSS", level: 92, category: "frontend" },
-  { name: "Python / Django", level: 85, category: "backend" },
-  { name: "TypeScript / JavaScript", level: 85, category: "backend" },
-  { name: "Node.js / Express", level: 85, category: "backend" },
-  { name: "SQL / Databases", level: 80, category: "backend" },
-  { name: "Git / GitHub", level: 92, category: "tools" },
-  { name: "Docker", level: 78, category: "tools" },
-  { name: "AWS", level: 70, category: "tools" },
-  { name: "Kubernetes", level: 65, category: "tools" },
-  { name: "RESTful APIs", level: 90, category: "API styles" },
-  { name: "WebSockets", level: 80, category: "API styles" },
+  { name: "JavaScript", category: "frontend" },
+  { name: "TypeScript", category: "frontend" },
+  { name: "React", category: "frontend" },
+  { name: "Next.js", category: "frontend" },
+  { name: "Angular", category: "frontend" },
+  { name: "React Native", category: "frontend" },
+  { name: "HTML5", category: "frontend" },
+  { name: "CSS3", category: "frontend" },
+  { name: "Python", category: "backend" },
+  { name: "Django", category: "backend" },
+  { name: "Node.js", category: "backend" },
+  { name: "Express", category: "backend" },
+  { name: "PostgreSQL", category: "backend" },
+  { name: "Git", category: "tools" },
+  { name: "GitHub", category: "tools" },
+  { name: "Docker", category: "tools" },
+  { name: "AWS", category: "tools" },
+  { name: "Kubernetes", category: "tools" },
+  { name: "REST", category: "API styles" },
+  { name: "WebSockets", category: "API styles" },
 ];
 
 export const timeline: TimelineItem[] = [
@@ -116,6 +120,19 @@ export const timeline: TimelineItem[] = [
     type: "education",
   },
 ];
+
+export const about = {
+  bio: [
+    "Hey, I'm Thomas — a software engineer based in Toronto with a background spanning full stack web applications, mobile development, and game development.",
+    "Most recently I built full stack web applications for optical terminal management at MBRYONICS in Galway. Before that I co-founded an indie game studio and completed internships at Joulica and Ericsson. I graduated with a B.Sc. in Computer Science from the University of Galway in 2023.",
+    "Outside of work I'm building side projects — currently Deckify (a Spotify inspired flashcard app) and Type Master (a battle royale typing game). I'm always looking for interesting problems to solve.",
+  ],
+  facts: [
+    { label: "Location", value: "Toronto, ON" },
+    { label: "Availability", value: "Open to offers" },
+    { label: "Education", value: "University of Galway" },
+  ],
+};
 
 export const socialLinks = [
   { name: "GitHub", url: "https://github.com/thomasthomasis", icon: "github" },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SkillsSection } from "@/components/about/skills-section";
 import { TimelineSection } from "@/components/about/timeline-section";
+import { about } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About",
@@ -34,31 +35,12 @@ export default function AboutPage() {
 
             {/* Bio text */}
             <div className="space-y-5 text-white/60 leading-relaxed">
-              <p>
-                Hey, I&apos;m Thomas — a software engineer based in Toronto with a
-                background spanning full stack web applications, mobile development,
-                and low-level systems programming.
-              </p>
-              <p>
-                Most recently I built full stack tooling and C++ device drivers for
-                optical ground stations at MBRYONICS in Galway. Before that I
-                co-founded an indie game studio and completed internships at Joulica
-                and Ericsson. I graduated with a B.Sc. in Computer Science from the
-                University of Galway in 2023.
-              </p>
-              <p>
-                Outside of work I&apos;m building side projects — currently Manhunt
-                (a real-time multiplayer mobile game) and Typing 99 (a battle royale
-                typing game). I&apos;m always looking for interesting problems to solve.
-              </p>
+              {about.bio.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
 
               <div className="grid grid-cols-2 gap-4 pt-4">
-                {[
-                  { label: "Location", value: "Toronto, ON" },
-                  { label: "Availability", value: "Open to offers" },
-                  { label: "Education", value: "University of Galway" },
-                  { label: "Pronouns", value: "He / Him" },
-                ].map(({ label, value }) => (
+                {about.facts.map(({ label, value }) => (
                   <div key={label}>
                     <dt className="text-xs text-white/25 uppercase tracking-widest mb-0.5">
                       {label}

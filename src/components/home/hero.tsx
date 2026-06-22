@@ -82,8 +82,7 @@ export function Hero() {
           >
             {[
               { value: "3+", label: "Years experience" },
-              { value: "3+", label: "Projects shipped" },
-              { value: "2", label: "Interns mentored" },
+              { value: "1", label: "Projects shipped" },
             ].map(({ value, label }) => (
               <div key={label} className="text-center">
                 <div className="text-2xl font-semibold text-white">{value}</div>

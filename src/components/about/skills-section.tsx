@@ -3,7 +3,75 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/components/ui/motion";
 import { skills, type Skill } from "@/lib/data";
-import { cn } from "@/lib/utils";
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiAngular,
+  SiHtml5,
+  SiCss,
+  SiPython,
+  SiDjango,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiGit,
+  SiGithub,
+  SiDocker,
+  SiKubernetes,
+} from "react-icons/si";
+import { Globe, Zap, Cloud } from "lucide-react";
+import type { IconType } from "react-icons";
+import type { LucideIcon } from "lucide-react";
+
+type AnyIcon = IconType | LucideIcon;
+
+const iconMap: Record<string, AnyIcon> = {
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  Angular: SiAngular,
+  "React Native": SiReact,
+  HTML5: SiHtml5,
+  CSS3: SiCss,
+  Python: SiPython,
+  Django: SiDjango,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  PostgreSQL: SiPostgresql,
+  Git: SiGit,
+  GitHub: SiGithub,
+  Docker: SiDocker,
+  AWS: Cloud,
+  Kubernetes: SiKubernetes,
+  REST: Globe,
+  WebSockets: Zap,
+};
+
+const colorMap: Record<string, string> = {
+  JavaScript: "#F7DF1E",
+  TypeScript: "#3178C6",
+  React: "#61DAFB",
+  "Next.js": "rgba(255,255,255,0.8)",
+  Angular: "#DD0031",
+  "React Native": "#61DAFB",
+  HTML5: "#E34F26",
+  CSS3: "#1572B6",
+  Python: "#3776AB",
+  Django: "#44B78B",
+  "Node.js": "#339933",
+  Express: "rgba(255,255,255,0.8)",
+  PostgreSQL: "#4169E1",
+  Git: "#F05032",
+  GitHub: "rgba(255,255,255,0.8)",
+  Docker: "#2496ED",
+  AWS: "#FF9900",
+  Kubernetes: "#326CE5",
+  REST: "rgba(255,255,255,0.6)",
+  WebSockets: "rgba(255,255,255,0.6)",
+};
 
 const categories: { key: Skill["category"]; label: string }[] = [
   { key: "frontend", label: "Frontend" },
@@ -12,22 +80,14 @@ const categories: { key: Skill["category"]; label: string }[] = [
   { key: "API styles", label: "API Styles" },
 ];
 
-function SkillBar({ skill, delay }: { skill: Skill; delay: number }) {
+function SkillChip({ skill }: { skill: Skill }) {
+  const Icon = iconMap[skill.name];
+  const color = colorMap[skill.name] ?? "rgba(255,255,255,0.6)";
+
   return (
-    <div className="space-y-1.5">
-      <div className="flex justify-between items-center">
-        <span className="text-sm text-white/70">{skill.name}</span>
-        <span className="text-xs text-white/30">{skill.level}%</span>
-      </div>
-      <div className="h-1 bg-white/[0.06] rounded-full overflow-hidden">
-        <motion.div
-          className="h-full bg-gradient-to-r from-white/60 to-white/30 rounded-full"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
-        />
-      </div>
+    <div className="flex flex-col items-center gap-2 px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.06] hover:bg-white/[0.08] transition-colors min-w-[72px]">
+      {Icon && <Icon size={26} style={{ color }} />}
+      <span className="text-[11px] text-white/50 whitespace-nowrap">{skill.name}</span>
     </div>
   );
 }
@@ -40,8 +100,9 @@ export function SkillsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
+        className="space-y-8"
       >
-        <motion.div variants={fadeUp} className="mb-10">
+        <motion.div variants={fadeUp}>
           <p className="text-xs text-white/30 uppercase tracking-widest mb-2">
             Expertise
           </p>
@@ -50,23 +111,21 @@ export function SkillsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
-          {categories.map(({ key, label }) => {
-            const categorySkills = skills.filter((s) => s.category === key);
-            return (
-              <motion.div key={key} variants={fadeUp}>
-                <h3 className="text-xs font-medium text-white/30 uppercase tracking-widest mb-4">
-                  {label}
-                </h3>
-                <div className="space-y-4">
-                  {categorySkills.map((skill, i) => (
-                    <SkillBar key={skill.name} skill={skill} delay={i * 0.05} />
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+        {categories.map(({ key, label }) => {
+          const categorySkills = skills.filter((s) => s.category === key);
+          return (
+            <motion.div key={key} variants={fadeUp} className="space-y-3">
+              <h3 className="text-xs font-medium text-white/30 uppercase tracking-widest">
+                {label}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {categorySkills.map((skill) => (
+                  <SkillChip key={skill.name} skill={skill} />
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </motion.div>
     </section>
   );
