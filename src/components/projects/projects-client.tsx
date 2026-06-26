@@ -62,15 +62,28 @@ export function ProjectsClient({ projects }: ProjectsClientProps) {
         ))}
       </div>
 
-      {/* Grid */}
-      <motion.div
-        layout
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-      >
+      {/* Bento grid */}
+      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <AnimatePresence mode="popLayout">
-          {filtered.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
-          ))}
+          {filtered.map((project, i) => {
+            const isFirst = i === 0 && filtered.length > 1;
+            return (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+                className={cn("h-full", isFirst && "lg:col-span-2")}
+              >
+                <ProjectCard
+                  project={project}
+                  size={isFirst ? "large" : "default"}
+                />
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </motion.div>
 

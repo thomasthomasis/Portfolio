@@ -5,6 +5,8 @@ export interface Project {
   longDescription: string;
   category: "web" | "mobile" | "ai" | "open-source";
   tags: string[];
+  thumbnailUrl?: string;
+  realUrl?: string;
   githubUrl?: string;
   liveUrl?: string;
   featured: boolean;
@@ -32,20 +34,22 @@ export const projects: Project[] = [
     longDescription: "AI integrated web app for creating and sharing flashcard decks, inspired by Spotify.",
     category: "web",
     tags: ["Next.js", "TypeScript", "Supabase", "OpenAI"],
+    realUrl: "https://deckify-app.vercel.app/",
     githubUrl: "https://github.com/thomasthomasis/Deckify",
     featured: true,
     year: 2026,
   },
   {
-    id: "type-master",
-    title: "Typer Master",
-    description: "Real-time multiplayer web game.",
-    longDescription: "A multiplayer battle royale web game built with React on the client and a real-time game server powered by Nakama (Go). Designed with robust DevOps infrastructure for scalability and reliability.",
+    id: "place-eternal",
+    title: "Place Eternal",
+    description: "Real-time collaborative canvas which anyone can contribute to, inspired by the r/place subreddit.",
+    longDescription: "Real-time collaborative canvas which anyone can contribute to, inspired by the r/place subreddit.",
     category: "web",
-    tags: ["React", "Nakama", "Go", "Node.js"],
-    githubUrl: "https://github.com/thomasthomasis/TypeMaster",
+    tags: ["JavaScript", "HTML", "CSS", "Docker", "AWS"],
+    realUrl: undefined,
+    githubUrl: "https://github.com/thomasthomasis/PlaceEternal",
     featured: true,
-    year: 2025,
+    year: 2026,
   },
   {
     id: "IAIYH",
@@ -54,10 +58,25 @@ export const projects: Project[] = [
     longDescription: "Singleplayer platformer game where you play as Brian Nomed. A man who has to make the decision between living with grief, or becoming the hero.",
     category: "web",
     tags: ["C#", "Unity"],
-    githubUrl: "https://www.delimitstudios.com/IAIYH",
+    realUrl: "https://www.delimitstudios.com/IAIYH",
+    githubUrl: "https://github.com/thomasthomasis/Its-All-In-Your-Head",
     featured: true,
     year: 2022,
-  }
+  },
+  {
+    id: "type-master",
+    title: "Typer Master",
+    description: "Real-time multiplayer web game.",
+    longDescription: "A multiplayer battle royale web game built with React on the client and a real-time game server powered by Nakama (Go). Designed with robust DevOps infrastructure for scalability and reliability.",
+    category: "web",
+    tags: ["React", "Nakama", "Go", "Node.js"],
+    realUrl: undefined,
+    githubUrl: "https://github.com/thomasthomasis/TypeMaster",
+    featured: true,
+    year: 2025,
+  },
+  
+  
 ];
 
 export const skills: Skill[] = [

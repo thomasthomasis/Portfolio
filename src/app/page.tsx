@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
 import { SkillsSection } from "@/components/about/skills-section";
 import { TimelineSection } from "@/components/about/timeline-section";
-import { ProjectsSceneLazy as ProjectsScene } from "@/components/projects-3d/lazy";
+import { ProjectsClient } from "@/components/projects/projects-client";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import PorfolioChat from "@/components/chat/PortfolioChat";
-import { about } from "@/lib/data";
+import { about, projects } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Thomas Sloane",
@@ -132,10 +132,10 @@ export default function HomePage() {
               Projects
             </h2>
             <p className="text-base text-white/40 max-w-lg leading-relaxed">
-              A curated selection of things I&apos;ve built. Click on the orbs to open them up.
+              A curated selection of things I&apos;ve built.
             </p>
           </div>
-          <ProjectsScene />
+          <ProjectsClient projects={projects} />
         </section>
 
         {/* Divider */}
